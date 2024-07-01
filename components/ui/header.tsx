@@ -11,6 +11,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "./button";
+import { ModeToggle } from "./mode-toggle";
 
 export default function Header() {
   return (
@@ -28,6 +29,7 @@ export default function Header() {
           </div>
         </form>
       </div>
+      <ModeToggle />
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="secondary" size="icon" className="rounded-full">
