@@ -9,8 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@neondatabase/serverless": "^0.9.4",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "drizzle-orm": "^0.31.2",
     "lucide-react": "^0.399.0",
     "next": "14.2.4",
     "react": "^18",
@@ -24,6 +26,7 @@
     "@types/react-dom": "^18",
     "@typescript-eslint/eslint-plugin": "^7.14.1",
     "@typescript-eslint/parser": "^7.14.1",
+    "drizzle-kit": "^0.22.8",
     "eslint": "^8",
     "eslint-config-next": "14.2.4",
     "eslint-config-prettier": "^9.1.0",

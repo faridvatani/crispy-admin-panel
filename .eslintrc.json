@@ -7,14 +7,5 @@
   ],
   "parser": "@typescript-eslint/parser",
   "plugins": ["@typescript-eslint"],
-  "root": true,
-  "rules": {
-    "prettier/prettier": [
-      "error",
-      {
-        "singleQuote": false,
-        "endOfLine": "auto"
-      }
-    ]
-  }
+  "root": true
 }
