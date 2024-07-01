@@ -10,6 +10,9 @@
   },
   "dependencies": {
     "@neondatabase/serverless": "^0.9.4",
+    "@radix-ui/react-dialog": "^1.1.1",
+    "@radix-ui/react-dropdown-menu": "^2.1.1",
+    "@radix-ui/react-slot": "^1.1.0",
     "@tanstack/react-query": "^5.49.2",
     "@trpc/client": "11.0.0-rc.433",
     "@trpc/next": "11.0.0-rc.433",
