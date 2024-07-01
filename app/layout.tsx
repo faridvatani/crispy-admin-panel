@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
+import { TRPCProvider } from "@/components/ui/trpc-provider";
 import { cn } from "@/lib/utils";
 import "./globals.css";
 
@@ -26,7 +27,9 @@ export default function RootLayout({
           fontSans.variable,
         )}
       >
+        <TRPCProvider>
         {children}
+        </TRPCProvider>
       </body>
     </html>
   );
