@@ -1,21 +1,16 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { Menu, Package2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "./sheet";
-import Link from "next/link";
-
-import {
-  Home,
-  LineChart,
-  Menu,
-  Package,
-  Package2,
-  ShoppingCart,
-  Users,
-} from "lucide-react";
+import { navItems } from "./sidebar";
 
 export default function MobileNav() {
+  const pathname = usePathname();
+
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -25,49 +20,26 @@ export default function MobileNav() {
         </Button>
       </SheetTrigger>
       <SheetContent side="left" className="flex flex-col">
+        <Link
+          href="/"
+          className="flex items-center gap-2 text-lg font-semibold px-2"
+        >
+          <Package2 className="h-6 w-6" />
+          <span>Crispy Panel</span>
+        </Link>
         <nav className="grid gap-2 text-lg font-medium">
-          <Link
-            href="/"
-            className="flex items-center gap-2 text-lg font-semibold"
-          >
-            <Package2 className="h-6 w-6" />
-            <span className="sr-only">Crispy Panel</span>
-          </Link>
-          <Link
-            href="/"
-            className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
-          >
-            <Home className="h-5 w-5" />
-            Dashboard
-          </Link>
-          <Link
-            href="/orders"
-            className="mx-[-0.65rem] flex items-center gap-4 rounded-xl bg-muted px-3 py-2 text-foreground hover:text-foreground"
-          >
-            <ShoppingCart className="h-5 w-5" />
-            Orders
-          </Link>
-          <Link
-            href="/products"
-            className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
-          >
-            <Package className="h-5 w-5" />
-            Products
-          </Link>
-          <Link
-            href="/users"
-            className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
-          >
-            <Users className="h-5 w-5" />
-            Users
-          </Link>
-          <Link
-            href="/analytics"
-            className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
-          >
-            <LineChart className="h-5 w-5" />
-            Analytics
-          </Link>
+          {navItems.map((navItem) => (
+            <Link
+              key={navItem.label}
+              href={navItem.href}
+              className={`flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary ${
+                pathname === navItem.href ? "bg-muted text-primary" : ""
+              }`}
+            >
+              {navItem.icon}
+              {navItem.label}
+            </Link>
+          ))}
         </nav>
       </SheetContent>
     </Sheet>

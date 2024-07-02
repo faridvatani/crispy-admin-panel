@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import React from "react";
-import { Button } from "./button";
+import { usePathname } from "next/navigation";
 
 import {
   Bell,
@@ -13,8 +13,15 @@ import {
   ShoppingCart,
   Users,
 } from "lucide-react";
+import { Button } from "./button";
 
-export const navItems = [
+type NavItem = {
+  label: string;
+  href: string;
+  icon: React.ReactNode;
+};
+
+export const navItems: NavItem[] = [
   {
     label: "Dashboard",
     href: "/",
@@ -43,6 +50,8 @@ export const navItems = [
 ];
 
 export default function Sidebar() {
+  const pathname = usePathname();
+
   return (
     <aside className="hidden border-r bg-muted/40 md:block">
       <div className="flex h-full max-h-screen flex-col gap-2">
@@ -58,41 +67,18 @@ export default function Sidebar() {
         </div>
         <div className="flex-1">
           <nav className="grid items-start px-2 text-sm font-medium lg:px-4">
-            <Link
-              href="/"
-              className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
-            >
-              <Home className="h-4 w-4" />
-              Dashboard
-            </Link>
-            <Link
-              href="/orders"
-              className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
-            >
-              <ShoppingCart className="h-4 w-4" />
-              Orders
-            </Link>
-            <Link
-              href="/products"
-              className="flex items-center gap-3 rounded-lg bg-muted px-3 py-2 text-primary transition-all hover:text-primary"
-            >
-              <Package className="h-4 w-4" />
-              Products
-            </Link>
-            <Link
-              href="/users"
-              className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
-            >
-              <Users className="h-4 w-4" />
-              Users
-            </Link>
-            <Link
-              href="/analytics"
-              className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
-            >
-              <LineChart className="h-4 w-4" />
-              Analytics
-            </Link>
+            {navItems.map((navItem: NavItem, index: number) => (
+              <Link
+                key={index}
+                href={navItem.href}
+                className={`flex items-center gap-3 rounded-lg px-3 py-3 text-muted-foreground transition-all hover:text-primary ${
+                  pathname === navItem.href ? "bg-muted text-primary" : ""
+                }`}
+              >
+                {navItem.icon}
+                {navItem.label}
+              </Link>
+            ))}
           </nav>
         </div>
       </div>
