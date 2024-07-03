@@ -24,27 +24,27 @@ type NavItem = {
 export const navItems: NavItem[] = [
   {
     label: "Dashboard",
-    href: "/",
+    href: "/dashboard",
     icon: <Home className="h-4 w-4" />,
   },
   {
     label: "Orders",
-    href: "/orders",
+    href: "/dashboard/orders",
     icon: <ShoppingCart className="h-4 w-4" />,
   },
   {
     label: "Products",
-    href: "/products",
+    href: "/dashboard/products",
     icon: <Package className="h-4 w-4" />,
   },
   {
     label: "Users",
-    href: "/users",
+    href: "/dashboard/users",
     icon: <Users className="h-4 w-4" />,
   },
   {
     label: "Analytics",
-    href: "/analytics",
+    href: "/dashboard/analytics",
     icon: <LineChart className="h-4 w-4" />,
   },
 ];
