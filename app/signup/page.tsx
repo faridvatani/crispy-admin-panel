@@ -4,6 +4,7 @@ import Link from "next/link";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { trpc } from "@/server/client";
 
 import {
   Form,
@@ -31,6 +32,8 @@ const formSchema = z.object({
 });
 
 export default function SignUp() {
+  const createUser = trpc.users.create.useMutation();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -38,8 +41,10 @@ export default function SignUp() {
     },
   });
 
+  // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
+    createUser.mutate(values);
   }
   return (
     <div className="flex justify-center items-center inset-0 absolute">
