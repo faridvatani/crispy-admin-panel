@@ -43,7 +43,6 @@ export default function SignUp() {
 
   // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
     createUser.mutate(values);
   }
   return (
