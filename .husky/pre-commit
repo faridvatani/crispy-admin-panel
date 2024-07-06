@@ -1,0 +1,12 @@
+echo '🔧⚙️ Preparing tools for the project setup! ⚙️🔧'
+echo 'This might take a moment...'
+
+# Check Code Standards
+pnpm lint ||
+(
+    echo '⚠️❌ There is an issue in your code. Check the logs! ⚠️❌'
+    echo 'Run pnpm lint, make changes, and try again.'
+    false;
+)
+
+echo '🎉 No problems found: proceeding with the setup.... ✨🚀'
