@@ -1,7 +1,7 @@
 "use client";
 
 import { trpc } from "@/server/client";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui";
 import {
   Table,
   TableBody,
@@ -9,7 +9,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
+} from "@/components/ui";
 
 export default function Users() {
   const users = trpc.users.get.useQuery();

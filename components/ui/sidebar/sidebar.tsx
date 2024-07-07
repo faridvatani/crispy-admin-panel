@@ -13,7 +13,7 @@ import {
   ShoppingCart,
   Users,
 } from "lucide-react";
-import { Button } from "./button";
+import { Button } from "../button/button";
 
 type NavItem = {
   label: string;

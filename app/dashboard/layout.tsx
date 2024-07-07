@@ -2,8 +2,7 @@ import React from "react";
 import type { Metadata } from "next";
 import "../globals.css";
 
-import Sidebar from "@/components/ui/sidebar";
-import Header from "@/components/ui/header";
+import { Header, Sidebar } from "@/components/ui";
 
 export const metadata: Metadata = {
   title: "Create Next App",

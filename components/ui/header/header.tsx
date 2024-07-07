@@ -1,7 +1,7 @@
 import React from "react";
-import MobileNav from "./mobile-nav";
+import MobileNav from "../mobile-nav/mobile-nav";
 import { CircleUser, Search } from "lucide-react";
-import { Input } from "./input";
+import { Input } from "../input/input";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -9,9 +9,9 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Button } from "./button";
-import { ModeToggle } from "./mode-toggle";
+} from "../dropdown-menu/dropdown-menu";
+import { Button } from "../button/button";
+import { ModeToggle } from "../mode-toggle/mode-toggle";
 
 export default function Header() {
   return (

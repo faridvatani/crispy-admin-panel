@@ -4,9 +4,9 @@ import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, Package2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "./sheet";
-import { navItems } from "./sidebar";
+import { Button } from "../button/button";
+import { Sheet, SheetContent, SheetTrigger } from "../sheet/sheet";
+import { navItems } from "../sidebar/sidebar";
 
 export default function MobileNav() {
   const pathname = usePathname();
