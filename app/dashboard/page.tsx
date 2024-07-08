@@ -29,8 +29,9 @@ export default function Dashboard() {
               <Image
                 src={`/assets/images/${image}.webp`}
                 alt={image}
-                layout="fill"
-                objectFit="cover"
+                fill={true}
+                style={{ objectFit: "cover" }}
+                loading="lazy"
               />
             </CarouselItem>
           ))}
