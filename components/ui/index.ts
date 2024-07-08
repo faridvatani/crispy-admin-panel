@@ -2,6 +2,7 @@ export { Badge } from "./badge/badge";
 export { Button } from "./button/button";
 export * from "./card/card";
 export * from "./carousel/carousel";
+export * from "./chart/chart";
 export * from "./dropdown-menu/dropdown-menu";
 export * from "./form/form";
 export { default as Header } from "./header/header";
