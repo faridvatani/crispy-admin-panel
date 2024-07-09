@@ -1,4 +1,4 @@
-import { ChartViews } from "@/components/feat/ChartViews";
+import { BarChartViews } from "@/components/feat/BarChartViews";
 
 export default function Analytics() {
   return (
@@ -7,7 +7,7 @@ export default function Analytics() {
         <h1 className="text-lg font-semibold md:text-2xl">Analytics</h1>
       </div>
       <div className="flex min-h-fit w-full flex-col items-center justify-center">
-        <ChartViews />
+        <BarChartViews />
       </div>
     </main>
   );
