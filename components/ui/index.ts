@@ -12,4 +12,5 @@ export { default as MobileNav } from "./mobile-nav/mobile-nav";
 export { ModeToggle } from "./mode-toggle/mode-toggle";
 export { Sheet } from "./sheet/sheet";
 export { default as Sidebar } from "./sidebar/sidebar";
+export { Skeleton } from "./skeleton/skeleton";
 export * from "./table/table";

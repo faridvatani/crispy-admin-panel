@@ -1,8 +1,10 @@
 "use client";
 
 import { trpc } from "@/server/client";
-import { Card, CardContent } from "@/components/ui";
 import {
+  Card,
+  CardContent,
+  Skeleton,
   Table,
   TableBody,
   TableCell,
@@ -24,21 +26,36 @@ export default function Users() {
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>ID</TableHead>
-                <TableHead className="hidden sm:table-cell">Name</TableHead>
-                <TableHead className="hidden sm:table-cell">Email</TableHead>
+                <TableHead className="hidden sm:table-cell">ID</TableHead>
+                <TableHead>Name</TableHead>
+                <TableHead>Email</TableHead>
                 <TableHead className="hidden sm:table-cell">Username</TableHead>
                 <TableHead className="hidden md:table-cell">Date</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
-              {users.status === "pending" && (
-                <TableRow>
-                  <TableCell colSpan={5}>Loading...</TableCell>
-                </TableRow>
-              )}
+              {users.isPending &&
+                Array.from({ length: 9 }).map((_, index) => (
+                  <TableRow key={index}>
+                    <TableCell className="hidden sm:table-cell">
+                      <Skeleton className="w-full h-6 bg-gray-400/30 rounded-xl max-w-sm" />
+                    </TableCell>
+                    <TableCell>
+                      <Skeleton className="w-full h-6 bg-gray-400/30 rounded-xl" />
+                    </TableCell>
+                    <TableCell>
+                      <Skeleton className="w-full h-6 bg-gray-400/30 rounded-xl" />
+                    </TableCell>
+                    <TableCell className="hidden sm:table-cell">
+                      <Skeleton className="w-full h-6 bg-gray-400/30 rounded-xl" />
+                    </TableCell>
+                    <TableCell className="hidden sm:table-cell">
+                      <Skeleton className="w-full h-6 bg-gray-400/30 rounded-xl" />
+                    </TableCell>
+                  </TableRow>
+                ))}
 
-              {users.status === "error" && (
+              {users.isError && (
                 <TableRow>
                   <TableCell colSpan={5}>
                     Error: {users.error.message}
@@ -46,7 +63,7 @@ export default function Users() {
                 </TableRow>
               )}
 
-              {users.status === "success" && users.data?.length === 0 && (
+              {users.isSuccess && users.data?.length === 0 && (
                 <TableRow>
                   <TableCell colSpan={5}>No users found</TableCell>
                 </TableRow>
@@ -54,17 +71,13 @@ export default function Users() {
 
               {users.data?.map((user) => (
                 <TableRow key={user.id}>
-                  <TableCell>
-                    <div className="hidden text-sm text-muted-foreground md:inline">
+                  <TableCell className="hidden sm:table-cell">
+                    <div className="marker:text-sm text-muted-foreground">
                       {user.id}
                     </div>
                   </TableCell>
-                  <TableCell className="hidden sm:table-cell">
-                    {user.name}
-                  </TableCell>
-                  <TableCell className="hidden sm:table-cell">
-                    {user.email}
-                  </TableCell>
+                  <TableCell>{user.name}</TableCell>
+                  <TableCell>{user.email}</TableCell>
                   <TableCell className="hidden sm:table-cell">
                     {user.username}
                   </TableCell>
