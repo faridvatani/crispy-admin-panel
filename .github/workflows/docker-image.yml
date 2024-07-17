@@ -4,17 +4,14 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
-
 env:
   IMAGE_NAME: crispy-admin-panel
-
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -26,9 +23,10 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v1
+        uses: docker/setup-buildx-action@v2
 
       - name: Cache Docker layers
+        id: cache
         uses: actions/cache@v2
         with:
           path: /tmp/.buildx-cache
@@ -43,11 +41,7 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}:latest
-          build-args: NEON_DATABASE_URL=${{ secrets.NEON_DATABASE_URL }}
+          build-args: |
+            NEON_DATABASE_URL=${{ secrets.NEON_DATABASE_URL }}
           cache-from: type=local,src=/tmp/.buildx-cache
-          cache-to: type=local,dest=/tmp/.buildx-cache-new
-
-      - name: Move cache
-        run: |
-          rm -rf /tmp/.buildx-cache
-          mv /tmp/.buildx-cache-new /tmp/.buildx-cache
+          cache-to: type=local,dest=/tmp/.buildx-cache,mode=max
