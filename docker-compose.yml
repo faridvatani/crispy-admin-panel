@@ -1,0 +1,11 @@
+version: "3.8"
+services:
+  nextjs:
+    build: .
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    environment:
+      - NEON_DATABASE_URL=${NEON_DATABASE_URL}
+      - NEXT_PUBLIC_APP_URL=${NEXT_PUBLIC_APP_URL}
