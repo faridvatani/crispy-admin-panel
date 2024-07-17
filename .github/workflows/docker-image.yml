@@ -34,10 +34,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-buildx-
 
-      - name: Copy environment file (if it exists)
+      - name: Load environment variables from .env
         run: |
-          cp .env .env.build  # Create a copy for the build process (optional)
-          echo "** Using environment variables from .env file (if present) **"
+          set -a
+          source .env
+          set +a
         shell: bash
 
       - name: Build and push Docker image
@@ -49,3 +50,6 @@ jobs:
           tags: ${{ secrets.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}:latest
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache,mode=max
+          build-args: |
+            NEON_DATABASE_URL=${{ secrets.NEON_DATABASE_URL }}
+            NEXT_PUBLIC_APP_URL=${{ env.NEXT_PUBLIC_APP_URL }}
