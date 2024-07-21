@@ -23,14 +23,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: "20"
           cache: "pnpm"
 
-      - name: Setup PNPM
-        run: npm install -g pnpm
+      - name: Install PNPM
+        run: |
+          npm install -g pnpm
+          export PATH="$(npm bin -g):$PATH"
+          echo "::add-path::$(npm bin -g)"
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
