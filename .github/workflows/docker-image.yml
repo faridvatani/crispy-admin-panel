@@ -23,17 +23,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v2
+        with:
+          version: "6.32.9"
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: "20"
           cache: "pnpm"
-
-      - name: Install PNPM
-        run: |
-          npm install -g pnpm
-          export PATH="$(npm bin -g):$PATH"
-          echo "::add-path::$(npm bin -g)"
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -58,7 +57,7 @@ jobs:
           NEON_DATABASE_URL: ${{ secrets.NEON_DATABASE_URL }}
           NEXT_PUBLIC_APP_URL: ${{ env.NEXT_PUBLIC_APP_URL }}
 
-      - name: Upload artifact
+      - name: Upload Artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: .next
