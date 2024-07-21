@@ -34,14 +34,17 @@ COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./package.json
 
-# Set environment variables
+# Accept NEON_DATABASE_URL and NEXT_PUBLIC_APP_URL as build arguments
 ARG NEON_DATABASE_URL
-ENV NEON_DATABASE_URL=${NEON_DATABASE_URL}
-
 ARG NEXT_PUBLIC_APP_URL
+
+# Set environment variables
+ENV NODE_ENV=production
+ENV NEON_DATABASE_URL=${NEON_DATABASE_URL}
 ENV NEXT_PUBLIC_APP_URL=${NEXT_PUBLIC_APP_URL}
 
-ENV NODE_ENV=production
+# Print the environment variables
+RUN echo "NEON_DATABASE_URL=$NEON_DATABASE_URL" && echo "NEXT_PUBLIC_APP_URL=$NEXT_PUBLIC_APP_URL"
 
 # Expose the port the app runs on
 EXPOSE 3000
