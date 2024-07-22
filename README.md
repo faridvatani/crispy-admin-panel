@@ -1,4 +1,8 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Crispy Admin Panel
+
+<img src="Screenshot.png" alt="crispy-admin-panel" /><br>
+
+This is a Fullstack Modern Admin Panel in Next.js, Shadcn ui, Drizzle, Neon, tRPC. 
 
 ## Getting Started
 
