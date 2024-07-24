@@ -12,6 +12,7 @@ import {
 } from "../dropdown-menu/dropdown-menu";
 import { Button } from "../button/button";
 import { ModeToggle } from "../mode-toggle/mode-toggle";
+import Clock from "@/components/feat/Clock";
 
 export default function Header() {
   return (
@@ -28,6 +29,9 @@ export default function Header() {
             />
           </div>
         </form>
+      </div>
+      <div className="hidden md:block">
+        <Clock />
       </div>
       <ModeToggle />
       <DropdownMenu>
