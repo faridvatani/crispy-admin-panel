@@ -14,21 +14,24 @@ export const usersRouter = router({
       }),
     )
     .query(async (opts) => {
-      const { input } = opts;
+      try {
+        const { input } = opts;
 
-      const offset = (input.page - 1) * input.totalItems;
-      const limit = input.totalItems;
+        const offset = (input.page - 1) * input.totalItems;
+        const limit = input.totalItems;
 
-      const [totalCount] = await db.select({ count: count() }).from(users);
+        const [totalCount] = await db.select({ count: count() }).from(users);
 
-      const totalPages = Math.ceil(totalCount.count / limit);
+        const totalPages = Math.ceil(totalCount.count / limit);
+        const items = await db.select().from(users).offset(offset).limit(limit);
 
-      const items = await db.select().from(users).offset(offset).limit(limit);
-
-      return {
-        items,
-        totalPages,
-      };
+        return {
+          items,
+          totalPages,
+        };
+      } catch (error) {
+        throw new Error("Failed to fetch users");
+      }
     }),
   create: publicProcedure
     .input(
