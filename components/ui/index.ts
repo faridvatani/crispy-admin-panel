@@ -1,5 +1,5 @@
 export { Badge } from "./badge/badge";
-export { Button } from "./button/button";
+export * from "./button/button";
 export * from "./card/card";
 export * from "./carousel/carousel";
 export * from "./chart/chart";
@@ -10,6 +10,7 @@ export { Input } from "./input/input";
 export { Label } from "./label/label";
 export { default as MobileNav } from "./mobile-nav/mobile-nav";
 export { ModeToggle } from "./mode-toggle/mode-toggle";
+export * from "./pagination/pagination";
 export { Sheet } from "./sheet/sheet";
 export { default as Sidebar } from "./sidebar/sidebar";
 export { Skeleton } from "./skeleton/skeleton";

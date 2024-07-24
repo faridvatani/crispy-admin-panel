@@ -9,7 +9,7 @@ export default function Home() {
       </p>
       <div className="mt-10">
         <a
-          href="/signup"
+          href="/dashboard"
           className="px-6 py-2 text-white bg-primary text-primary-foreground hover:bg-primary/90 rounded"
         >
           Let&apos;s get started
