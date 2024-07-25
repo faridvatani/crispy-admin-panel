@@ -6,9 +6,11 @@ import Autoplay from "embla-carousel-autoplay";
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui";
 import { sliderImages } from "@/lib/const";
 import Image from "next/image";
-import { PieChartViews } from "@/components/feat/PieChartViews";
-import DashboardCard from "@/components/feat/DashboardCard";
-import { AreaChartViews } from "@/components/feat/AreaChartViews";
+import {
+  AreaChartViews,
+  DashboardCard,
+  PieChartViews,
+} from "@/components/features";
 
 export default function Dashboard() {
   const plugin = useRef(Autoplay({ delay: 2000, stopOnInteraction: true }));

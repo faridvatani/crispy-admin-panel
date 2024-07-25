@@ -12,7 +12,7 @@ import {
 } from "../dropdown-menu/dropdown-menu";
 import { Button } from "../button/button";
 import { ModeToggle } from "../mode-toggle/mode-toggle";
-import Clock from "@/components/feat/Clock";
+import { Clock } from "@/components/features";
 
 export default function Header() {
   return (

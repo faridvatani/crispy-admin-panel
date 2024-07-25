@@ -9,4 +9,13 @@ pnpm lint ||
     false;
 )
 
+# Build the project
+echo '🛠️ Building the project...'
+pnpm build ||
+(
+    echo '⚠️❌ Build failed. Check the logs! ⚠️❌'
+    echo 'Run pnpm build, make changes, and try again.'
+    false;
+)
+
 echo '🎉 No problems found: proceeding with the setup.... ✨🚀'

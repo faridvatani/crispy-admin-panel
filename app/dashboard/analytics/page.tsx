@@ -1,4 +1,4 @@
-import { BarChartViews } from "@/components/feat/BarChartViews";
+import { BarChartViews } from "@/components/features";
 
 export default function Analytics() {
   return (
