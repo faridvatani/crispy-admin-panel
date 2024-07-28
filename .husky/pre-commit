@@ -2,10 +2,20 @@ echo '🔧⚙️ Preparing tools for the project setup! ⚙️🔧'
 echo 'This might take a moment...'
 
 # Check Code Standards
+echo '🧹 Linting the code...'
 pnpm lint ||
 (
     echo '⚠️❌ There is an issue in your code. Check the logs! ⚠️❌'
     echo 'Run pnpm lint, make changes, and try again.'
+    false;
+)
+
+# Check Code Tests
+echo '🧪 Running tests...'
+pnpm test ||
+(
+    echo '🔥🔥🔥 Tests failed. Check the logs! 🔥🔥🔥'
+    echo 'Run pnpm test, make changes, and try again.'
     false;
 )
 

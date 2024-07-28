@@ -1,20 +1,17 @@
 {
   "root": true,
-  "extends": [
-    "next/core-web-vitals",
-    "eslint:recommended"
-  ],
+  "extends": ["next/core-web-vitals", "eslint:recommended"],
   "rules": {
     "no-unused-vars": "warn",
     "no-console": "warn",
-    "no-debugger":"error",
+    "no-debugger": "error",
     "no-alert": "error",
     "no-eval": "error",
     "no-empty": "error",
     "no-var": "error",
     "eqeqeq": ["error", "always"],
     "curly": "error",
-    "strict":["error", "global"]
+    "strict": ["error", "global"]
   },
   "overrides": [
     {
@@ -26,6 +23,7 @@
     "sourceType": "module"
   },
   "env": {
+    "jest": true,
     "browser": true,
     "node": true,
     "es6": true
