@@ -111,7 +111,7 @@ export const UsersTable = ({
             {currentPage > 1 && (
               <PaginationItem>
                 <PaginationPrevious
-                  href={`/admin/users?page=${
+                  href={`/dashboard/users?page=${
                     currentPage - 1
                   }&totalItems=${totalItems}`}
                 />
@@ -120,7 +120,7 @@ export const UsersTable = ({
             {Array.from({ length: totalPages }).map((_, index) => (
               <PaginationItem key={index}>
                 <PaginationLink
-                  href={`/admin/users?page=${
+                  href={`/dashboard/users?page=${
                     index + 1
                   }&totalItems=${totalItems}`}
                 >
@@ -134,7 +134,7 @@ export const UsersTable = ({
             {totalPages !== currentPage && (
               <PaginationItem>
                 <PaginationNext
-                  href={`/admin/users?page=${
+                  href={`/dashboard/users?page=${
                     currentPage + 1
                   }&totalItems=${totalItems}`}
                 />

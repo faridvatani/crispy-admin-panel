@@ -1,7 +1,7 @@
 import db from "@/db/drizzle";
 import { users } from "@/db/schema";
 import { genSaltSync, hashSync } from "bcrypt-ts";
-import { count } from "drizzle-orm";
+import { count, ilike, or } from "drizzle-orm";
 import { z } from "zod";
 import { publicProcedure, router } from "../trpc";
 
@@ -11,6 +11,7 @@ export const usersRouter = router({
       z.object({
         page: z.number(),
         totalItems: z.number(),
+        search: z.string().nullable(),
       }),
     )
     .query(async (opts) => {
@@ -20,10 +21,32 @@ export const usersRouter = router({
         const offset = (input.page - 1) * input.totalItems;
         const limit = input.totalItems;
 
-        const [totalCount] = await db.select({ count: count() }).from(users);
+        const [totalCount] = await db
+          .select({ count: count() })
+          .from(users)
+          .where(
+            or(
+              input.search
+                ? ilike(users.email, `%${input.search}%`)
+                : undefined,
+              input.search ? ilike(users.name, `%${input.search}%`) : undefined,
+            ),
+          );
 
         const totalPages = Math.ceil(totalCount.count / limit);
-        const items = await db.select().from(users).offset(offset).limit(limit);
+        const items = await db
+          .select()
+          .from(users)
+          .offset(offset)
+          .limit(limit)
+          .where(
+            or(
+              input.search
+                ? ilike(users.email, `%${input.search}%`)
+                : undefined,
+              input.search ? ilike(users.name, `%${input.search}%`) : undefined,
+            ),
+          );
 
         return {
           items,
