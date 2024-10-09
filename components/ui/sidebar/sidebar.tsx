@@ -8,6 +8,7 @@ import {
   Bell,
   Home,
   LineChart,
+  Mail,
   Package,
   Package2,
   ShoppingCart,
@@ -46,6 +47,11 @@ export const navItems: NavItem[] = [
     label: "Analytics",
     href: "/dashboard/analytics",
     icon: <LineChart className="h-4 w-4" />,
+  },
+  {
+    label: "Contact Us",
+    href: "/dashboard/contact",
+    icon: <Mail className="h-4 w-4" />,
   },
 ];
 

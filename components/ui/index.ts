@@ -15,3 +15,4 @@ export { Sheet } from "./sheet/sheet";
 export { default as Sidebar } from "./sidebar/sidebar";
 export { Skeleton } from "./skeleton/skeleton";
 export * from "./table/table";
+export { Textarea } from "./textarea/textarea";
