@@ -30,6 +30,7 @@ const renderUsersTable = (props = {}) => {
     totalPages: 2,
     currentPage: 1,
     totalItems: 10,
+    onPageChange: jest.fn(),
   };
   return render(<UsersTable {...defaultProps} {...props} />);
 };
@@ -65,6 +66,6 @@ describe("UsersContent", () => {
 
   it("renders loading state", () => {
     renderUsersTable({ isLoading: true });
-    expect(screen.getAllByRole("row").length).toBe(10);
+    expect(screen.getAllByRole("row").length).toBe(8);
   });
 });
