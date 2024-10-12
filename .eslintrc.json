@@ -10,7 +10,6 @@
     "no-empty": "error",
     "no-var": "error",
     "eqeqeq": ["error", "always"],
-    "curly": "error",
     "strict": ["error", "global"]
   },
   "overrides": [

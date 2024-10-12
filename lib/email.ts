@@ -15,7 +15,5 @@ export const send = async (emailFormData: z.infer<typeof formSchema>) => {
     react: EmailTemplate({ firstName: emailFormData.firstName }),
   });
 
-  if (error) {
-    throw error;
-  }
+  if (error) throw error;
 };

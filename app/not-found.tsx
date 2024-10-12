@@ -12,9 +12,7 @@ export default function NotFound() {
         Let&rsquo;s get you back home and on track!
       </p>
       <Link href="/">
-        <Button className="flex items-center gap-2 mt-6">
-          Home
-        </Button>
+        <Button className="flex items-center gap-2 mt-6">Home</Button>
       </Link>
       <p className="mt-8 text-sm text-gray-400">
         If you believe this is an error, please contact support.
