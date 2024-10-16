@@ -2,7 +2,7 @@
 
 <img src="Screenshot.png" alt="crispy-admin-panel" /><br>
 
-This is a Fullstack Modern Admin Panel in Next.js, Shadcn ui, Drizzle, Neon, tRPC. 
+This is a Fullstack Modern Admin Panel in Next.js, Shadcn ui, Drizzle, Neon, tRPC, and Resend.
 
 ## Getting Started
 
